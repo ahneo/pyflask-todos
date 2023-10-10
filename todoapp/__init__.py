@@ -19,5 +19,11 @@ def create_app():
             })
         print("testing",saved_todos)
         return jsonify({'todos': saved_todos})
+    
+    @app.route('/todos_count', methods=['GET'])
+    def get_todos_count():
+        count = todos.count_documents({})
+        return jsonify({'todos_count': count}), 200
+        
 
     return app
